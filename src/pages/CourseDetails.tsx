@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, BarChart3, Check, ArrowRight, AlertCircle, BookOpen, ListChecks, Info } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import "../CourseDetails.mobile.css";
 import Footer from "@/components/Footer";
 import Bubbles from "@/components/Bubbles";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -39,7 +39,7 @@ const CourseDetails = () => {
   if (!course) {
     return (
       <div className="min-h-screen ocean-section flex items-center justify-center">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="text-center pt-24">
           <h1 className="font-heading text-3xl font-bold mb-4">Course Not Found</h1>
           <Link to="/courses" className="text-primary font-body">← Back to Courses</Link>
@@ -53,20 +53,26 @@ const CourseDetails = () => {
   return (
     <div className="min-h-screen ocean-section relative">
       <Bubbles />
-      <Navbar />
-      <main className="pt-24 pb-20 md:pb-16">
+      {/* <Navbar className="hide-mobile-header" /> */}
+      <main className="pb-20 md:pb-16">
         <div className="container mx-auto px-4">
-          <Link to="/courses" className="inline-flex items-center gap-2 text-primary font-body mb-6 hover:gap-3 transition-all text-sm">
-            <ArrowLeft size={16} /> Back to All Courses
-          </Link>
+          <div className="-mx-4 mb-8">
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
+              <Link to="/courses" className="block group">
+                <div className="relative">
+                  <div className="absolute z-10 m-2">
+                    <div className="flex items-center justify-center w-9 h-9 rounded-full bg-background/80 backdrop-blur group-hover:bg-primary/80 transition-colors">
+                      <ArrowLeft size={20} className="text-primary group-hover:text-primary-foreground transition-colors" />
+                    </div>
+                  </div>
+                  <img src={imageMap[course.image]} alt={`${course.title} - PADI scuba diving course`} className="w-full h-auto object-cover m-0" style={{ display: 'block', borderRadius: 0 }} width={800} height={544} />
+                </div>
+              </Link>
+            </motion.div>
+          </div>
 
           {/* Hero Section */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-              <div className="rounded-2xl overflow-hidden glow-border">
-                <img src={imageMap[course.image]} alt={`${course.title} - PADI scuba diving course`} className="w-full h-auto object-cover" width={800} height={544} />
-              </div>
-            </motion.div>
+
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
               <span className="font-body text-primary font-semibold text-xs uppercase tracking-widest">{course.level}</span>
@@ -91,7 +97,7 @@ const CourseDetails = () => {
           </div>
 
           {/* Course Structure */}
-          <div className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20 px-4">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-3 mb-6">
               <div className="w-9 h-9 rounded-xl bg-primary/20 flex items-center justify-center">
                 <BookOpen className="text-primary" size={18} />
@@ -142,7 +148,7 @@ const CourseDetails = () => {
           </div>
 
           {/* Packages */}
-          <div className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20 px-4">
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading text-2xl md:text-3xl font-bold mb-6 text-center">
               Choose Your <span className="gradient-text">Package</span>
             </motion.h2>
@@ -192,7 +198,7 @@ const CourseDetails = () => {
           </div>
 
           {/* Prerequisites & What's Included */}
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-8 mt-16 md:mt-20">
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-8 mt-16 md:mt-20 px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-card p-5 md:p-8 rounded-xl">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-7 h-7 rounded-lg bg-accent/20 flex items-center justify-center">
@@ -232,7 +238,7 @@ const CourseDetails = () => {
           </div>
 
           {/* Explore More */}
-          <div className="mt-16 md:mt-24">
+          <div className="mt-16 md:mt-24 px-4">
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Explore More <span className="gradient-text">Courses</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
               {otherCourses.map((c) => (
@@ -251,7 +257,6 @@ const CourseDetails = () => {
               ))}
             </div>
           </div>
-        </div>
       </main>
       <Footer />
       <MobileBottomNav />

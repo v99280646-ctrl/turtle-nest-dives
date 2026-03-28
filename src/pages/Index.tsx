@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CoursesSection from "@/components/CoursesSection";
 import DiscoverScuba from "@/components/DiscoverScuba";
-import PricingSection from "@/components/PricingSection";
+// import PricingSection from "@/components/PricingSection";
 import FunDiving from "@/components/FunDiving";
 import StaySection from "@/components/StaySection";
 import TestimonialsPreview from "@/components/TestimonialsPreview";
@@ -23,7 +23,7 @@ const Index = () => (
       <WhyChooseUs />
       <CoursesSection />
       <DiscoverScuba />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <FunDiving />
       <StaySection />
       <TestimonialsPreview />
