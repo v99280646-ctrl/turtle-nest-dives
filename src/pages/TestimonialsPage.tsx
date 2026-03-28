@@ -58,6 +58,7 @@ const TestimonialsPage = () => (
       </div>
     </main>
     <Footer />
+    <MobileBottomNav />
   </div>
 );
 
