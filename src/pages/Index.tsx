@@ -11,12 +11,13 @@ import TestimonialsPreview from "@/components/TestimonialsPreview";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Bubbles from "@/components/Bubbles";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 const Index = () => (
   <div className="min-h-screen ocean-section relative">
     <Bubbles />
     <Navbar />
-    <main>
+    <main className="pb-14 md:pb-0">
       <Hero />
       <AboutSection />
       <WhyChooseUs />
@@ -29,6 +30,7 @@ const Index = () => (
       <ContactSection />
     </main>
     <Footer />
+    <MobileBottomNav />
   </div>
 );
 
